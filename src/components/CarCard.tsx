@@ -1,5 +1,8 @@
-import { Block, Card, CardContent, Spacer, Text } from "vcc-ui"
+import { Block, Button, Card, CardContent, Flex, Link, Row, Spacer, Text } from "vcc-ui"
 import { Car } from "../types/car.interface"
+import Image from "next/image"
+
+import styles from "./../../public/css/CarCard.module.css";
 
 interface CardProps {
     car: Car
@@ -7,18 +10,42 @@ interface CardProps {
 
 export function CarCard({ car }: CardProps) {
     return (
-        <Card href={"/learn/" + car.id}>
+        <div className={styles.cardWrapper}>
             <CardContent>
                 <Text variant="bates">{car?.bodyType}</Text>
-                <Block>
-                    <Text variant="amundsen">{car?.modelName}</Text>
+                <Flex extend={{
+                    justifyContent: 'flex-start',
+                    alignItems: 'center',
+                    flexDirection: 'row',
+                    margin: 0
+                }}>
+
+                    <Text variant="amundsen" extend={{ margin: 0, padding: 0 }}>{car?.modelName}</Text>
                     <Text variant="bates" subStyle="inline-link">{car?.modelType}</Text>
-                </Block>
+
+                </Flex>
 
 
                 <Spacer />
-                <Text>This is a link that will take you somewhere</Text>
+                <Image src={car.imageUrl} alt={car.modelName} width="250" height="200"></Image>
+                <Spacer />
+
+                <Flex extend={{
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    flexDirection: 'row'
+                }}>
+
+                    <Link href="https:www.volvocars.com/" arrow="right">
+                        SHOP
+                    </Link>
+                    <Link href="https:www.volvocars.com/" arrow="right">
+                        LEARN
+                    </Link>
+
+                </Flex>
+
             </CardContent>
-        </Card>
+        </div>
     )
 }
