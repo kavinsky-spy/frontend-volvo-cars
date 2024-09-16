@@ -1,4 +1,4 @@
-import { Block, Button, Card, CardContent, Flex, Link, Row, Spacer, Text } from "vcc-ui"
+import { Flex, Link, Spacer, Text } from "vcc-ui"
 import { Car } from "../types/car.interface"
 import Image from "next/image"
 
